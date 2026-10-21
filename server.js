@@ -232,7 +232,7 @@ function body(req) {
     req.on("end", () => { try { resolve(data ? JSON.parse(data) : {}); } catch (e) { reject(new Error("bad json")); } });
   });
 }
-const MIME = { ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": "application/javascript", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".svg": "image/svg+xml", ".ico": "image/x-icon", ".txt": "text/plain; charset=utf-8", ".webp": "image/webp" };
+const MIME = { ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": "application/javascript", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".svg": "image/svg+xml", ".ico": "image/x-icon", ".txt": "text/plain; charset=utf-8", ".webp": "image/webp", ".webmanifest": "application/manifest+json", ".json": "application/json", ".woff2": "font/woff2" };
 function serveStatic(req, res, urlPath) {
   let p = decodeURIComponent(urlPath.split("?")[0]);
   if (p === "/") p = "/index.html";

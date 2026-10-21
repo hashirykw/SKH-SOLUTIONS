@@ -67,13 +67,19 @@ $("#facultyGrid").innerHTML = Object.entries(TEACHERS).map(teacherCard).join("")
 
 // ---------- Loader, then hero entrance ----------
 document.body.classList.add("is-loading");
-window.addEventListener("load", () => {
-  setTimeout(() => {
+(() => {
+  let done = false;
+  const reveal = () => {
+    if (done) return; done = true;
     $("#loader").classList.add("is-done");
     document.body.classList.remove("is-loading");
     document.body.classList.add("is-ready");
-  }, 1400);
-});
+  };
+  // < 1s on a first visit (whichever comes first: page load or 900ms), skipped on repeat visits
+  const quick = document.documentElement.classList.contains("seen") || matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (quick) reveal();
+  else { window.addEventListener("load", () => setTimeout(reveal, 300)); setTimeout(reveal, 900); }
+})();
 
 // ---------- Mobile menu ----------
 const menuToggle = $("#menuToggle");
@@ -144,6 +150,7 @@ setInterval(() => {
 // ---------- Count-up numbers ----------
 const countObserver = new IntersectionObserver((entries) => entries.forEach((e) => {
   if (!e.isIntersecting) return;
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) { e.target.textContent = e.target.dataset.to; countObserver.unobserve(e.target); return; }
   const el = e.target, to = +el.dataset.to, start = performance.now(), dur = 1600;
   const tick = (now) => {
     const p = Math.min((now - start) / dur, 1);
