@@ -7,14 +7,23 @@
   <title>Student Portal | SKH Solutions</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,600;1,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400..700&family=Instrument+Serif:ital@1&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400..700&family=Instrument+Serif:ital@1&display=swap"></noscript>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/portal.css">
+  <link rel="stylesheet" href="css/ds.css">
+  <link rel="stylesheet" href="css/app.css">
   <script>
     // apply saved light/dark theme before the page paints
-    try { const t = localStorage.getItem("skh-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    (() => { let t = null; try { t = localStorage.getItem("skh-theme"); } catch (e) {}
+      document.documentElement.dataset.theme = t || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"); })();
   </script>
-  <link rel="icon" href="assets/skh-emblem.png">
+  <meta name="description" content="Student and parent portal for SKH Solutions — marks, attendance, planner, fees and teacher remarks.">
+  <meta name="robots" content="noindex">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
 </head>
 <body class="portal-body">
 
@@ -38,7 +47,7 @@
     <div class="login__form-wrap">
       <form class="login__form" id="loginForm">
         <a href="index.html" class="logo logo--dark">
-          <span class="logo__mark"><img src="assets/skh-emblem.png" alt=""></span>
+          <span class="logo__mark"><img src="assets/skh-emblem-96.png" alt="" width="44" height="44"></span>
           <span class="logo__text">SKH Solutions<small>Student Portal</small></span>
         </a>
         <h2>Welcome back 👋</h2>
@@ -77,7 +86,7 @@
   <div class="app" id="app" hidden>
     <aside class="side">
       <a href="index.html" class="logo">
-        <span class="logo__mark"><img src="assets/skh-emblem.png" alt=""></span>
+        <span class="logo__mark"><img src="assets/skh-emblem-96.png" alt="" width="44" height="44"></span>
         <span class="logo__text">SKH Solutions<small>Student Portal</small></span>
       </a>
       <nav class="side__nav" id="sideNav">
@@ -242,5 +251,6 @@
   <script src="js/qr.js"></script>
   <script src="js/reports.js"></script>
   <script src="js/portal.js"></script>
+  <script src="js/app-ux.js"></script>
 </body>
 </html>
