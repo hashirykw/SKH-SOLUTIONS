@@ -2,3 +2,5 @@ data/
 CREDENTIALS.txt
 node_modules/
 *.zip
+.vercel/
+public/
