@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#072062">
+  <title>Teacher Portal | SKH Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,600;1,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/portal.css">
+  <link rel="stylesheet" href="css/teacher.css">
+  <script>
+    try { const t = localStorage.getItem("skh-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <link rel="icon" href="assets/skh-emblem.png">
+</head>
+<body class="portal-body teacher-body">
+
+  <!-- ================= LOGIN ================= -->
+  <section class="login login--teacher" id="login">
+    <div class="login__art">
+      <span class="orb orb--1"></span><span class="orb orb--2"></span>
+      <a href="index.html" class="login__back">← Back to website</a>
+      <div class="login__art-inner">
+        <img class="login__crest" src="assets/skh-emblem.png" alt="SKH Solutions logo">
+        <p class="staff-chip">Staff only</p>
+        <h1>Teacher<br><em class="gold-text">Portal.</em></h1>
+        <ul class="login__feats">
+          <li><span>✦</span> Enter test marks for your classes</li>
+          <li><span>✦</span> Take daily attendance</li>
+          <li><span>✦</span> Set assignments & track submissions</li>
+          <li><span>✦</span> Post notices & remarks to students</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="login__form-wrap">
+      <form class="login__form" id="loginForm">
+        <a href="index.html" class="logo logo--dark">
+          <span class="logo__mark"><img src="assets/skh-emblem.png" alt=""></span>
+          <span class="logo__text">SKH Solutions<small>Teacher Portal</small></span>
+        </a>
+        <h2>Staff sign in</h2>
+        <p class="login__sub">Teachers can only view and edit the students in their own classes.</p>
+
+        <label class="lf">
+          <span>Staff ID</span>
+          <input type="text" id="tid" placeholder="e.g. SKH-T-108" autocomplete="username" required>
+        </label>
+        <label class="lf">
+          <span>Password</span>
+          <div class="lf__pw">
+            <input type="password" id="tpw" placeholder="Password" autocomplete="current-password" required>
+            <button type="button" id="pwToggle" aria-label="Show password">Show</button>
+          </div>
+        </label>
+        <p class="login__err" id="loginErr" role="alert" hidden></p>
+        <button class="btn btn--gold btn--block btn--shine" id="loginBtn" type="submit">
+          <span class="lb-text">Sign in as Teacher</span><span class="spinner" aria-hidden="true"></span>
+        </button>
+        <p class="login__note">Your Staff ID and first password are in the CREDENTIALS.txt handed out by the admin. Forgot it? Ask Sir Khurram to reset it.</p>
+        <p class="login__help">Are you a student? <a href="portal.html">Student portal →</a></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================= APP ================= -->
+  <div class="app" id="app" hidden>
+    <aside class="side side--teacher">
+      <a href="index.html" class="logo">
+        <span class="logo__mark"><img src="assets/skh-emblem.png" alt=""></span>
+        <span class="logo__text">SKH Solutions<small>Teacher Portal</small></span>
+      </a>
+      <nav class="side__nav" id="sideNav">
+        <button class="is-active" data-view="dash"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Dashboard</span></button>
+        <button data-view="classes"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-5.5 6.5-5.5s6.5 2 6.5 5.5M16 4.5a3.5 3.5 0 010 7M18 14.8c2 .6 3.5 2.3 3.5 5.2"/></svg><span>My Students</span></button>
+        <button data-view="syllabus"><svg viewBox="0 0 24 24"><path d="M4 4h12a4 4 0 014 4v12H8a4 4 0 01-4-4z"/><path d="M8 9h8M8 13h5"/></svg><span>Syllabus Progress</span></button>
+        <button data-view="marks"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span>Enter Marks</span></button>
+        <button data-view="attend"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span>Attendance</span></button>
+        <button data-view="tasks"><svg viewBox="0 0 24 24"><path d="M9 4h6M9 4a2 2 0 00-2 2H5v15h14V6h-2a2 2 0 00-2-2M9 13l2 2 4-4"/></svg><span>Assignments</span></button>
+        <button data-view="notice"><svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 1112 0c0 7 3 9 3 9H3s3-2 3-9M10 21a2 2 0 004 0"/></svg><span>Notices</span></button>
+        <p class="side__label admin-only">Admin</p>
+        <button class="admin-only" data-view="admissions"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H7l-3 3z"/><path d="M8 9h8M8 12h5"/></svg><span>Admissions</span><em class="side__count" id="enqCount" hidden></em></button>
+        <button class="admin-only" data-view="students"><svg viewBox="0 0 24 24"><circle cx="10" cy="8" r="4"/><path d="M3 21c0-4 3.5-6 7-6 1.5 0 3 .4 4.2 1M18 14v7M14.5 17.5h7"/></svg><span>Manage Students</span></button>
+        <button class="admin-only" data-view="staff"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg><span>Teacher Logins</span></button>
+        <button class="admin-only" data-view="fees"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg><span>Fees & Settings</span></button>
+        <button class="admin-only" data-view="site"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg><span>Website Content</span></button>
+        <button class="admin-only" data-view="profiles"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/><path d="M17 3l2 2-5 5h-2V8z"/></svg><span>Teacher Profiles</span></button>
+        <button class="admin-only" data-view="timetable"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M9 13h2M13 13h2M9 17h2"/></svg><span>Timetables</span></button>
+        <button class="admin-only" data-view="backups"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v3h16v-3"/></svg><span>Backups</span></button>
+      </nav>
+      <div class="side__foot">
+        <button class="side__logout side__reset" id="changePw"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg><span>Change password</span></button>
+        <button class="side__logout" id="logout"><svg viewBox="0 0 24 24"><path d="M15 4h4v16h-4M10 16l4-4-4-4M14 12H3"/></svg><span>Log out</span></button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="top">
+        <div>
+          <p class="top__hello" id="hello"></p>
+          <h1 class="top__title" id="viewTitle">Dashboard</h1>
+        </div>
+        <div class="top__right">
+          <span class="demo-chip sync-chip" id="syncChip">● Saved</span>
+          <span class="demo-chip" id="roleChip">Teacher</span>
+          <button class="tpill" id="themeToggle" role="switch" aria-checked="false" aria-label="Switch light / dark mode" title="Light / dark mode">
+            <span class="tpill__lab tpill__lab--l">Light<br>mode</span>
+            <span class="tpill__lab tpill__lab--d">Dark<br>mode</span>
+            <span class="tpill__k" aria-hidden="true">
+              <svg class="tpill__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="4.4"/><path d="M12 2.6v2.4M12 19v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.6 12H5M19 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
+              <svg class="tpill__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.6 8.6 0 1 1 10.4 3.6a6.8 6.8 0 0 0 10.1 10.6z"/><path d="M16.6 4.4l.5 1.3 1.3.5-1.3.5-.5 1.3-.5-1.3-1.3-.5 1.3-.5z"/></svg>
+            </span>
+          </button>
+          <div class="user">
+            <span class="user__av" id="userAv"></span>
+            <div><strong id="userName"></strong><small id="userMeta"></small></div>
+          </div>
+        </div>
+      </header>
+
+      <div class="views">
+        <!-- Dashboard -->
+        <section class="view is-active" data-v="dash">
+          <div class="kpis" id="kpis"></div>
+          <div class="panel">
+            <div class="panel__head"><h3>My classes</h3><span id="classCount"></span></div>
+            <div class="class-cards" id="classCards"></div>
+          </div>
+          <div class="dash-grid dash-grid--teacher">
+            <div class="panel">
+              <div class="panel__head"><h3>Needs attention</h3><span>Average below 70% in your subject</span></div>
+              <ul class="attention" id="attention"></ul>
+            </div>
+            <div class="panel">
+              <div class="panel__head"><h3>Recent activity</h3><span id="activityScope"></span></div>
+              <ul class="activity" id="activity"></ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- My Students -->
+        <section class="view" data-v="classes">
+          <div class="class-bar">
+            <label class="tf tf--grow"><span>Class</span><select class="class-select" data-for="classes"></select></label>
+            <label class="tf tf--grow"><span>Search</span><input type="search" id="rosterSearch" placeholder="Student name or ID…"></label>
+          </div>
+          <div class="panel">
+            <div class="panel__head"><h3 id="rosterTitle">Students</h3><span>Tap a student to view & edit their record</span></div>
+            <div class="table-wrap">
+              <table class="marks roster">
+                <thead><tr><th>Student</th><th>Section</th><th>Attendance</th><th>Subject average</th><th>Last test</th><th>Pending work</th></tr></thead>
+                <tbody id="rosterBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Syllabus progress -->
+        <section class="view" data-v="syllabus">
+          <div class="class-bar">
+            <label class="tf tf--grow"><span>Class</span><select class="class-select" data-for="syllabus"></select></label>
+          </div>
+          <div class="sy-top" id="syTop"></div>
+          <div class="dash-grid dash-grid--teacher">
+            <div class="panel">
+              <div class="panel__head"><h3>Students</h3><span>From each student's planner checklist</span></div>
+              <div class="table-wrap"><table class="marks sy-table"><thead><tr><th>Student</th><th>Syllabus progress</th><th>Sub-topics done</th><th>Low confidence</th><th></th></tr></thead><tbody id="syStudents"></tbody></table></div>
+            </div>
+            <div class="panel">
+              <div class="panel__head"><h3>Weakest topics</h3><span>Most "low confidence" marks in this class</span></div>
+              <ul class="sy-weak" id="syWeak"></ul>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel__head"><h3>Class progress by topic</h3><span id="syCode"></span></div>
+            <div class="sy-heat" id="syHeat"></div>
+          </div>
+        </section>
+
+        <!-- Enter marks -->
+        <section class="view" data-v="marks">
+          <div class="class-bar">
+            <label class="tf tf--grow"><span>Class</span><select class="class-select" data-for="marks"></select></label>
+          </div>
+          <div class="panel">
+            <div class="panel__head"><h3>New test</h3><span>Marks appear in each student's portal as soon as you save</span></div>
+            <div class="form-row">
+              <label class="tf tf--grow"><span>Test name</span><input id="mName" type="text" placeholder="e.g. Waves Test"></label>
+              <label class="tf"><span>Date</span><input id="mDate" type="date"></label>
+              <label class="tf tf--sm"><span>Out of</span><input id="mOut" type="number" min="1" value="50"></label>
+            </div>
+            <div class="entry-grid" id="mGrid"></div>
+            <div class="form-actions">
+              <button class="btn btn--gold" id="mSave">Save marks</button>
+              <span class="hint" id="mHint"></span>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel__head"><h3>Previous tests</h3><span>Open a test to edit or delete it</span></div>
+            <div class="test-list" id="mList"></div>
+          </div>
+        </section>
+
+        <!-- Attendance -->
+        <section class="view" data-v="attend">
+          <div class="class-bar">
+            <label class="tf tf--grow"><span>Class</span><select class="class-select" data-for="attend"></select></label>
+            <label class="tf"><span>Date</span><input id="aDate" type="date"></label>
+          </div>
+          <div class="panel">
+            <div class="panel__head"><h3 id="aTitle">Attendance</h3>
+              <div class="head-actions">
+                <button class="btn btn--gold btn--sm" id="qrOpen">📷 Scan QR</button>
+                <button class="btn btn--outline btn--sm" id="aAll">Mark all present</button>
+                <button class="btn btn--outline btn--sm" id="aRestAbsent">Mark rest absent</button>
+              </div>
+            </div>
+            <div class="qr-scan" id="qrScan">
+              <div class="qr-scan__cam" id="qrCam" hidden>
+                <video id="qrVideo" playsinline muted></video>
+                <span class="qr-scan__frame" aria-hidden="true"></span>
+                <button class="qr-scan__close" id="qrClose" aria-label="Stop camera">✕</button>
+              </div>
+              <div class="qr-scan__side">
+                <label class="tf"><span>Scan or type a Student ID</span>
+                  <input id="qrInput" type="text" placeholder="Point a QR scanner here, or type SKH-2026-0101 and press Enter" autocomplete="off"></label>
+                <div class="qr-scan__opts">
+                  <span>Scanned students are marked</span>
+                  <div class="seg" id="qrMark"><button class="seg__btn seg--p is-on" data-code="p">Present</button><button class="seg__btn seg--l" data-code="l">Late</button></div>
+                  <b id="qrCount"></b>
+                </div>
+                <ul class="qr-log" id="qrLog"></ul>
+              </div>
+            </div>
+            <p class="att-warn" id="aWarn" hidden></p>
+            <div class="att-roster" id="aGrid"></div>
+            <div class="form-actions">
+              <button class="btn btn--gold" id="aSave">Save attendance</button>
+              <span class="hint" id="aHint"></span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Assignments -->
+        <section class="view" data-v="tasks">
+          <div class="class-bar">
+            <label class="tf tf--grow"><span>Class</span><select class="class-select" data-for="tasks"></select></label>
+          </div>
+          <div class="panel">
+            <div class="panel__head"><h3>Set a new assignment</h3></div>
+            <div class="form-row">
+              <label class="tf tf--grow"><span>Title</span><input id="kTitle" type="text" placeholder="e.g. Past paper 5054/22 — Q1 to Q6"></label>
+              <label class="tf"><span>Due date</span><input id="kDue" type="date"></label>
+              <button class="btn btn--gold form-row__btn" id="kAdd">Assign to class</button>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel__head"><h3>Assignments & submissions</h3><span>Students mark work as submitted in their portal</span></div>
+            <div class="asg-list" id="kList"></div>
+          </div>
+        </section>
+
+        <!-- Notices -->
+        <section class="view" data-v="notice">
+          <div class="panel">
+            <div class="panel__head"><h3>Post a notice</h3></div>
+            <div class="form-row">
+              <label class="tf tf--grow"><span>Title</span><input id="nTitle" type="text" placeholder="e.g. Extra class on Saturday"></label>
+              <label class="tf"><span>Type</span>
+                <select id="nTag"><option>Class</option><option>Exams</option><option>Homework</option><option>Event</option><option>Reminder</option></select>
+              </label>
+            </div>
+            <label class="tf"><span>Message</span><textarea id="nBody" rows="3" placeholder="Write your message to students…"></textarea></label>
+            <div class="form-row">
+              <label class="tf tf--grow"><span>Send to</span><select id="nTo"></select></label>
+              <button class="btn btn--gold form-row__btn" id="nPost">Post notice</button>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel__head"><h3 id="nListTitle">Your notices</h3></div>
+            <ul class="notices" id="nList"></ul>
+          </div>
+        </section>
+
+        <!-- ============ ADMIN: Admissions ============ -->
+        <section class="view" data-v="admissions">
+          <div class="kpis" id="enqKpis"></div>
+          <div class="panel">
+            <div class="panel__head"><h3>Admission enquiries</h3>
+              <div class="seg seg--tabs" id="enqTabs">
+                <button class="seg__btn is-on" data-f="open">Open</button><button class="seg__btn" data-f="new">New</button><button class="seg__btn" data-f="contacted">Contacted</button><button class="seg__btn" data-f="enrolled">Enrolled</button><button class="seg__btn" data-f="closed">Closed</button><button class="seg__btn" data-f="all">All</button>
+              </div>
+            </div>
+            <div class="enq-list" id="enqList"></div>
+          </div>
+        </section>
+
+        <!-- ============ ADMIN: Manage Students ============ -->
+        <section class="view" data-v="students">
+          <div class="panel" id="stFormPanel">
+            <div class="panel__head"><h3 id="stFormTitle">Enrol a new student</h3><span id="stFormNote">A Student ID and first password are created automatically</span></div>
+            <form id="stForm" class="st-form" novalidate>
+              <input type="hidden" id="stEditId"><input type="hidden" id="stEnqId">
+              <div class="form-row">
+                <label class="tf tf--grow"><span>Student name</span><input id="stName" type="text" maxlength="80" placeholder="e.g. Ayaan Ahmed" required></label>
+                <label class="tf"><span>Level</span><select id="stLevel"><option>O Level</option><option>AS Level</option><option>A2 Level</option></select></label>
+                <label class="tf"><span>Campus</span><select id="stCampus"></select></label>
+                <label class="tf tf--sm"><span>Section</span><input id="stSection" type="text" maxlength="12" placeholder="e.g. O-B"></label>
+              </div>
+              <div class="form-row">
+                <label class="tf tf--grow"><span>Parent / guardian</span><input id="stGuardian" type="text" maxlength="80" placeholder="e.g. Mr. Tariq Ahmed"></label>
+                <label class="tf tf--grow"><span>Phone (WhatsApp)</span><input id="stPhone" type="tel" maxlength="30" placeholder="03xx xxxxxxx"></label>
+              </div>
+              <div class="tf"><span>Subjects</span><div class="st-subs" id="stSubs"></div></div>
+              <p class="login__err" id="stErr" hidden></p>
+              <div class="form-actions">
+                <button class="btn btn--gold btn--sm" type="submit" id="stSave">Enrol student</button>
+                <button class="btn btn--outline btn--sm" type="button" id="stCancel" hidden>Cancel editing</button>
+              </div>
+            </form>
+            <div class="cred-box" id="credBox" hidden></div>
+          </div>
+          <div class="panel">
+            <div class="panel__head"><h3>All students <small class="muted" id="stCount"></small></h3><input class="tf-search" id="stSearch" type="search" placeholder="Search name or ID…" aria-label="Search students"></div>
+            <div class="table-wrap">
+              <table class="marks roster">
+                <thead><tr><th>Student</th><th>Level</th><th>Campus</th><th>Subjects</th><th>Fees</th><th></th></tr></thead>
+                <tbody id="stBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ ADMIN: Teacher logins ============ -->
+        <section class="view" data-v="staff">
+          <div class="panel">
+            <div class="panel__head"><h3>Teacher logins</h3><span>Reset a password if a teacher forgets it — they choose a new one at next login</span></div>
+            <div class="table-wrap">
+              <table class="marks roster">
+                <thead><tr><th>Teacher</th><th>Staff ID</th><th>Subjects</th><th>Students</th><th>Password</th><th></th></tr></thead>
+                <tbody id="staffBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ ADMIN: Fees & Settings ============ -->
+        <section class="view" data-v="fees">
+          <div class="kpis" id="feeKpis"></div>
+          <div class="panel">
+            <div class="panel__head"><h3>Monthly fee register</h3>
+              <div class="head-actions">
+                <label class="tf"><span>Month</span><select id="feeMonth"></select></label>
+                <label class="tf"><span>Show</span><select id="feeShow"><option value="all">All</option><option value="due">Unpaid</option><option value="paid">Paid</option></select></label>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="marks roster">
+                <thead><tr><th>Student</th><th>Campus</th><th>Amount</th><th>Due</th><th>Status</th><th></th></tr></thead>
+                <tbody id="feeBody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel__head"><h3>Fee settings</h3><span>Unpaid vouchers update to the new rates</span></div>
+            <form id="setForm" class="form-row" novalidate>
+              <label class="tf"><span>O Level / subject</span><input id="setO" type="number" min="0" step="100"></label>
+              <label class="tf"><span>AS Level / subject</span><input id="setAS" type="number" min="0" step="100"></label>
+              <label class="tf"><span>A2 Level / subject</span><input id="setA2" type="number" min="0" step="100"></label>
+              <label class="tf"><span>Late fee</span><input id="setLate" type="number" min="0" step="50"></label>
+              <label class="tf tf--grow"><span>Bank / payment details on voucher</span><input id="setBank" type="text" maxlength="200" placeholder="e.g. Meezan Bank · A/C 0000-000000 · SKH Solutions"></label>
+              <button class="btn btn--gold form-row__btn" type="submit">Save settings</button>
+            </form>
+          </div>
+        </section>
+
+        <!-- ============ ADMIN: Website content ============ -->
+        <section class="view" data-v="site">
+          <div class="panel">
+            <div class="panel__head"><h3>Campus details</h3><span>Shown on the website's Campuses section</span></div>
+            <form id="campForm" novalidate>
+              <div class="camp-rows" id="campRows"></div>
+              <div class="form-actions"><button class="btn btn--gold btn--sm" type="submit">Save campus details</button><span class="hint">Map: paste a Google Maps link, or leave empty to search by address.</span></div>
+            </form>
+          </div>
+          <div class="panel">
+            <div class="panel__head"><h3>Results</h3><span>Real results only — they appear on the website</span></div>
+            <form id="resForm" class="form-row" novalidate>
+              <label class="tf tf--grow"><span>Student name</span><input id="rName" type="text" maxlength="60" placeholder="e.g. Ayaan A. (or initials)"></label>
+              <label class="tf"><span>Subject</span><select id="rSubject"></select></label>
+              <label class="tf"><span>Level</span><select id="rLevel"><option>O Level</option><option>AS Level</option><option>A Level</option></select></label>
+              <label class="tf tf--sm"><span>Grade</span><input id="rGrade" type="text" maxlength="6" placeholder="A*"></label>
+              <label class="tf tf--sm"><span>Session</span><input id="rYear" type="text" maxlength="12" placeholder="MJ 2026"></label>
+              <button class="btn btn--gold form-row__btn" type="submit">Add result</button>
+            </form>
+            <ul class="adm-list" id="resList"></ul>
+          </div>
+          <div class="panel">
+            <div class="panel__head"><h3>Testimonials</h3><span>Only publish words the student / parent agreed to share</span></div>
+            <form id="tesForm" novalidate>
+              <div class="form-row">
+                <label class="tf tf--grow"><span>Name</span><input id="tName" type="text" maxlength="60" placeholder="e.g. Mrs. Sana (parent)"></label>
+                <label class="tf tf--grow"><span>Who they are</span><input id="tRole" type="text" maxlength="80" placeholder="e.g. Parent of an O Level student, Gulshan"></label>
+              </div>
+              <label class="tf"><span>What they said</span><textarea id="tText" rows="3" maxlength="600"></textarea></label>
+              <div class="form-actions">
+                <label class="consent"><input type="checkbox" id="tConsent"> They gave permission to show this on the website</label>
+                <button class="btn btn--gold btn--sm" type="submit">Add testimonial</button>
+              </div>
+            </form>
+            <ul class="adm-list" id="tesList"></ul>
+          </div>
+          <div class="panel">
+            <div class="panel__head"><h3>News &amp; announcements</h3><span>Replaces the default news cards on the website (first item is shown big)</span></div>
+            <form id="newsForm" novalidate>
+              <div class="form-row">
+                <label class="tf tf--sm"><span>Tag</span><input id="nwTag" type="text" maxlength="24" placeholder="Admissions"></label>
+                <label class="tf tf--grow"><span>Headline</span><input id="nwTitle" type="text" maxlength="120" placeholder="e.g. New O Level batches start 1 October"></label>
+              </div>
+              <label class="tf"><span>Short text</span><textarea id="nwText" rows="2" maxlength="400"></textarea></label>
+              <div class="form-row">
+                <label class="tf tf--grow"><span>Link (optional)</span><input id="nwLink" type="url" maxlength="400" placeholder="https://www.facebook.com/skhsolutions/…"></label>
+                <button class="btn btn--gold form-row__btn" type="submit">Add news</button>
+              </div>
+            </form>
+            <ul class="adm-list" id="newsList"></ul>
+          </div>
+        </section>
+
+        <!-- ============ ADMIN: Teacher profiles ============ -->
+        <section class="view" data-v="profiles">
+          <div class="panel">
+            <div class="panel__head"><h3>Edit a teacher's public profile</h3>
+              <label class="tf"><span>Teacher</span><select id="pfWho"></select></label>
+            </div>
+            <form id="pfForm" novalidate>
+              <div class="form-row">
+                <label class="tf tf--grow"><span>Title shown on the website</span><input id="pfTitle" type="text" maxlength="80" placeholder="e.g. Physics · O & A Level"></label>
+                <label class="tf tf--grow"><span>Timings (optional)</span><input id="pfTimings" type="text" maxlength="160" placeholder="e.g. Mon, Wed, Fri · 4–8 pm"></label>
+              </div>
+              <label class="tf"><span>About (bio)</span><textarea id="pfBio" rows="4" maxlength="1200"></textarea></label>
+              <div class="form-row">
+                <label class="tf tf--grow"><span>Qualifications &amp; facts — one per line, "Label: value"</span><textarea id="pfFacts" rows="4" placeholder="Education: MSc Physics, University of Karachi&#10;Teaching since: 2012"></textarea></label>
+                <label class="tf tf--grow"><span>"In class you'll get" — one point per line</span><textarea id="pfApproach" rows="4"></textarea></label>
+              </div>
+              <div class="form-row">
+                <div class="tf"><span>Levels taught</span><div class="st-subs" id="pfLevels"></div></div>
+                <div class="tf tf--grow"><span>Campuses (students at these campuses are matched to this teacher)</span><div class="st-subs" id="pfCampuses"></div></div>
+              </div>
+              <div class="form-actions">
+                <button class="btn btn--gold btn--sm" type="submit">Save profile</button>
+                <button class="btn btn--outline btn--sm" type="button" id="pfReset">Reset to default</button>
+                <span class="hint" id="pfHint"></span>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- ============ ADMIN: Timetables ============ -->
+        <section class="view" data-v="timetable">
+          <div class="panel">
+            <div class="panel__head"><h3>Class timetable</h3>
+              <div class="head-actions">
+                <label class="tf"><span>Campus</span><select id="ttaCampus"></select></label>
+                <label class="tf"><span>Level</span><select id="ttaLevel"><option>O Level</option><option>AS Level</option><option>A2 Level</option></select></label>
+              </div>
+            </div>
+            <p class="hint" id="ttaNote"></p>
+            <div class="table-wrap"><table class="marks tta" id="ttaGrid"></table></div>
+            <div class="form-actions">
+              <button class="btn btn--gold btn--sm" id="ttaSave">Save timetable</button>
+              <button class="btn btn--outline btn--sm" id="ttaSuggest">Fill with the suggested schedule</button>
+              <button class="btn btn--outline btn--sm btn--danger" id="ttaClear">Remove (show the suggested one)</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ ADMIN: Backups ============ -->
+        <section class="view" data-v="backups">
+          <div class="panel">
+            <div class="panel__head"><h3>Backups</h3><span>A copy of all data is saved automatically every day (last 30 days kept)</span></div>
+            <div class="form-actions" style="margin-top:0">
+              <a class="btn btn--gold btn--sm" href="api/admin/backup" download>⬇ Download a backup now</a>
+              <label class="btn btn--outline btn--sm file-btn">⬆ Restore from a file<input type="file" id="bkFile" accept=".json,application/json" hidden></label>
+              <span class="hint">Keep a downloaded copy somewhere safe (Google Drive / USB) every week.</span>
+            </div>
+            <ul class="adm-list" id="bkList"></ul>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <nav class="bottom-nav" id="bottomNav"></nav>
+  </div>
+
+  <!-- Student record drawer -->
+  <div class="modal" id="sModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="sTitle">
+      <div class="modal__bar">
+        <span class="modal__tag" id="sTag"></span>
+        <button class="modal__close" data-close aria-label="Close">✕</button>
+      </div>
+      <div class="modal__body" id="sBody"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/demo.js"></script>
+  <script src="js/syllabus.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/account.js"></script>
+  <script src="js/reports.js"></script>
+  <script src="js/teacher.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/qrscan.js"></script>
+</body>
+</html>

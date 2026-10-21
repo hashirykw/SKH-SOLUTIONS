@@ -1,0 +1,19 @@
+# Render.com blueprint — New → Blueprint → pick this repository.
+# The disk keeps the data (students, marks, backups) safe across restarts and deploys.
+services:
+  - type: web
+    name: skh-solutions
+    runtime: node
+    plan: starter            # disks need a paid plan; the free plan loses data on every restart
+    buildCommand: "echo no build needed"
+    startCommand: node server.js
+    healthCheckPath: /
+    envVars:
+      - key: DATA_DIR
+        value: /var/data
+      - key: SKH_ADMIN_PASSWORD
+        sync: false          # you type the admin's first password in the Render dashboard
+    disk:
+      name: skh-data
+      mountPath: /var/data
+      sizeGB: 1

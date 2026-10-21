@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#072062">
+  <title>SKH Solutions | O & A Level Coaching in Karachi</title>
+  <meta name="description" content="SKH Solutions — Cambridge O Level and A Level coaching, crash courses and CAIE registration across six campuses in Karachi.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,600;1,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    // apply saved light/dark theme before the page paints
+    try { const t = localStorage.getItem("skh-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <link rel="icon" href="assets/skh-emblem.png">
+</head>
+<body>
+
+  <!-- Loader -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <img class="loader__logo" src="assets/skh-emblem.png" alt="">
+      <div class="loader__bar"><span></span></div>
+    </div>
+  </div>
+
+  <div class="progress" id="progress"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="#home" class="logo" aria-label="SKH Solutions home">
+        <span class="logo__mark"><img src="assets/skh-emblem.png" alt=""></span>
+        <span class="logo__text">SKH Solutions<small>One Stop Solution</small></span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Main">
+        <a href="#about">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#subjects">Subjects</a>
+        <a href="#faculty">Faculty</a>
+        <a href="#timetable">Timetable</a>
+        <a href="portal.html" class="btn btn--outline btn--sm nav__portal">Student Portal</a>
+        <a href="#contact" class="btn btn--gold btn--sm nav__cta">Enrol Now</a>
+      </nav>
+      <div class="header__actions">
+      <button class="tpill" id="themeToggle" role="switch" aria-checked="false" aria-label="Switch light / dark mode" title="Light / dark mode">
+            <span class="tpill__lab tpill__lab--l">Light<br>mode</span>
+            <span class="tpill__lab tpill__lab--d">Dark<br>mode</span>
+            <span class="tpill__k" aria-hidden="true">
+              <svg class="tpill__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="4.4"/><path d="M12 2.6v2.4M12 19v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.6 12H5M19 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
+              <svg class="tpill__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.6 8.6 0 1 1 10.4 3.6a6.8 6.8 0 0 0 10.1 10.6z"/><path d="M16.6 4.4l.5 1.3 1.3.5-1.3.5-.5 1.3-.5-1.3-1.3-.5 1.3-.5z"/></svg>
+            </span>
+          </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="home">
+      <div class="hero__bg" aria-hidden="true">
+        <span class="orb orb--1"></span>
+        <span class="orb orb--2"></span>
+        <span class="orb orb--3"></span>
+        <div class="hero__grid"></div>
+        <span class="glyph g1">π</span>
+        <span class="glyph g2">∑</span>
+        <span class="glyph g3">∫</span>
+        <span class="glyph g4">λ</span>
+        <span class="glyph g5">Δ</span>
+        <span class="glyph g6">√</span>
+      </div>
+
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="kicker hero-anim"><span class="kicker__dot"></span> An Institute of <b class="oa-o">O</b>&nbsp;&amp;&nbsp;<b class="oa-a">A</b>&nbsp;Levels · Admissions Open</p>
+          <h1 class="hero__title">
+            <span class="line"><span class="word">Where</span> <span class="word">ambition</span></span>
+            <span class="line"><span class="word">meets</span> <span class="word"><em class="gold-text">excellence.</em></span></span>
+          </h1>
+          <p class="hero__rotator hero-anim">Expert coaching in <span class="rotator" id="rotator">Mathematics</span></p>
+          <p class="hero__lead hero-anim">Founded by <b>Sir Khurram Hussain</b>, SKH Solutions brings 35 subject specialists under one roof — a one stop for all the solutions to our students' problems, from the first lesson to the final paper.</p>
+          <div class="hero__actions hero-anim">
+            <a href="#contact" class="btn btn--gold btn--shine">Enquire About Admission <span class="btn__arrow">→</span></a>
+            <a href="#programs" class="btn btn--outline">Explore Programs</a>
+          </div>
+          <ul class="hero__stats hero-anim">
+            <li><strong class="count" data-to="6">0</strong><span>Campuses</span></li>
+            <li><strong class="count" data-to="16">0</strong><span>Subjects</span></li>
+            <li><strong class="count" data-to="35">0</strong><span>Teachers</span></li>
+          </ul>
+        </div>
+
+        <div class="hero__visual hero-anim">
+          <div class="emblem">
+            <svg class="emblem__ring" viewBox="0 0 300 300" aria-hidden="true">
+              <defs><path id="circle" d="M150,150 m-120,0 a120,120 0 1,1 240,0 a120,120 0 1,1 -240,0"/></defs>
+              <text><textPath href="#circle" textLength="748" lengthAdjust="spacing">SKH SOLUTIONS ✦ ONE STOP SOLUTION ✦ O &amp; A LEVELS ✦</textPath></text>
+            </svg>
+            <div class="emblem__core"><img src="assets/skh-emblem.png" alt="SKH Solutions logo"></div>
+          </div>
+          <div class="float-card fc--1">
+            <span class="fc__icon">✦</span>
+            <div><strong>CAIE Registration</strong><small>May/June session open</small></div>
+          </div>
+          <div class="float-card fc--2">
+            <span class="fc__icon">◆</span>
+            <div><strong>Crash Courses</strong><small>O & A Level intensives</small></div>
+          </div>
+          <div class="float-card fc--3">
+            <span class="fc__icon">❖</span>
+            <div><strong>Girls' Campus</strong><small>PECHS</small></div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-cue" aria-label="Scroll down"><span></span></a>
+    </section>
+
+    <!-- ================= MARQUEE ================= -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Mathematics</span><i>✦</i><span class="outline">Physics</span><i>✦</i><span>Chemistry</span><i>✦</i><span class="outline">Biology</span><i>✦</i><span>Economics</span><i>✦</i><span class="outline">Accounting</span><i>✦</i><span>English</span><i>✦</i><span class="outline">Computer Science</span><i>✦</i>
+        <span>Mathematics</span><i>✦</i><span class="outline">Physics</span><i>✦</i><span>Chemistry</span><i>✦</i><span class="outline">Biology</span><i>✦</i><span>Economics</span><i>✦</i><span class="outline">Accounting</span><i>✦</i><span>English</span><i>✦</i><span class="outline">Computer Science</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="section about" id="about">
+      <div class="container about__grid">
+        <div class="about__visual reveal">
+          <div class="arch">
+            <div class="arch__inner">
+              <span class="arch__num">SKH</span>
+              <p class="arch__label">Teacher:<br><em>a child's third parent.</em></p>
+            </div>
+          </div>
+          <div class="arch arch--small">
+            <div class="arch__inner"><span class="arch__big">O&amp;A</span><small>Levels</small></div>
+          </div>
+        </div>
+        <div class="about__text">
+          <p class="kicker reveal">About SKH Solutions</p>
+          <h2 class="reveal">One roof. 35 specialists. <em class="gold-text">Every subject.</em></h2>
+          <p class="reveal">SKH stands for <b>Sir Khurram Hussain</b> — an O Level Islamiyat teacher who has taught at some of Karachi's leading schools since 2008. SKH Solutions grew from his classes into a complete O &amp; A Level institute, bringing together experienced teachers for sciences, commerce and humanities across six campuses in Karachi.</p>
+          <ul class="pillars">
+            <li class="reveal"><span>01</span><div><h3>Complete Cambridge coverage</h3><p>Every topic of the CAIE syllabus taught in order — nothing skipped before the exam.</p></div></li>
+            <li class="reveal"><span>02</span><div><h3>Written practice</h3><p>Regular writing and composition practice, because marks are earned on paper.</p></div></li>
+            <li class="reveal"><span>03</span><div><h3>Time management</h3><p>Students learn to plan answers and finish papers on time.</p></div></li>
+            <li class="reveal"><span>04</span><div><h3>A campus near you</h3><p>Gulshan, Jauhar, North, Bahadurabad, PECHS (girls) and Defence.</p></div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FOUNDER ================= -->
+    <section class="section founder" id="founder">
+      <div class="container founder__grid">
+        <div class="founder__card reveal">
+          <div class="founder__photo">
+            <img src="assets/skh-emblem.png" alt="" class="founder__emblem">
+            <span>KH</span>
+          </div>
+          <div class="founder__badge">Founder</div>
+          <h3>Sir Khurram Hussain</h3>
+          <p>O Level Islamiyat</p>
+          <div class="founder__actions">
+            <button class="btn btn--gold btn--sm" data-open-founder>View full profile</button>
+          </div>
+        </div>
+
+        <div class="founder__story">
+          <p class="kicker reveal">Meet the Founder</p>
+          <h2 class="reveal">The teacher behind <em class="gold-text">SKH.</em></h2>
+          <p class="founder__lead reveal">Sir Khurram Hussain began teaching professionally in 2008. He holds a BA (Hons) in Islamiyat &amp; Computer Science from Sheikh Zayed Islamic University and a Master's in Islamic Studies from the University of Karachi, and has taught at Beaconhouse School System, Karachi Grammar School, Shahwilayat Public School and Nakhla Islamic School.</p>
+
+          <ol class="timeline">
+            <li class="reveal"><b>2008</b><div><strong>Starts teaching</strong><p>Begins his professional teaching career with Beaconhouse School System.</p></div></li>
+            <li class="reveal"><b>2009</b><div><strong>61 of 78 students score an A</strong><p>In O Level Islamiyat at BSS, with top students scoring 97% and 95%.</p></div></li>
+            <li class="reveal"><b>2012</b><div><strong>Distinction</strong><p>His student Ramsha Ahmed secures a distinction in O Level Islamiyat.</p></div></li>
+            <li class="reveal"><b>Books</b><div><strong>9 Islamiyat books</strong><p>One for each chapter of O Level Islamiyat, plus a Cambridge exam guide and revision books.</p></div></li>
+            <li class="reveal"><b>Today</b><div><strong>SKH Solutions</strong><p>A full O &amp; A Level institute — 35 teachers, 16 subjects, 6 campuses.</p></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROGRAMS ================= -->
+    <section class="section programs" id="programs">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="kicker">Our Programs</p>
+          <h2>Choose the path that <em class="gold-text">fits you</em></h2>
+        </div>
+        <div class="bento">
+          <article class="card card--wide spot reveal">
+            <span class="card__no">01</span>
+            <div class="card__icon"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M7 9v5c0 1.5 2.5 3 5 3s5-1.5 5-3V9"/></svg></div>
+            <h3>O Level</h3>
+            <p>Full-year classes that build strong foundations and sharp exam technique across core and elective subjects.</p>
+            <a href="#contact" class="link-arrow">Enquire <span>→</span></a>
+          </article>
+          <article class="card card--tall card--gold spot reveal">
+            <span class="card__no">02</span>
+            <div class="card__icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 .9-4.5 4.3 1 6.3L12 16.5 6.5 19.5l1-6.3L3 8.9 9 8z"/></svg></div>
+            <h3>A Level</h3>
+            <p>Advanced, concept-first teaching for AS and A2, with detailed feedback on structured and essay answers.</p>
+            <ul class="card__list"><li>AS &amp; A2</li><li>Sciences · Commerce · Humanities</li><li>Detailed answer feedback</li></ul>
+            <a href="#contact" class="link-arrow">Enquire <span>→</span></a>
+          </article>
+          <article class="card spot reveal">
+            <span class="card__no">03</span>
+            <div class="card__icon"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div>
+            <h3>Crash Courses</h3>
+            <p>Intensive revision before each exam session — full syllabus plus past papers.</p>
+            <a href="#contact" class="link-arrow">Enquire <span>→</span></a>
+          </article>
+          <article class="card spot reveal">
+            <span class="card__no">04</span>
+            <div class="card__icon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+            <h3>CAIE Registration</h3>
+            <p>We help private candidates register for Cambridge exams, step by step.</p>
+            <a href="#contact" class="link-arrow">Enquire <span>→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= COURSE FINDER ================= -->
+    <section class="section finder" id="finder">
+      <div class="container finder__grid">
+        <div class="finder__box reveal">
+          <p class="kicker">Course Finder</p>
+          <h2>Not sure what to <em class="gold-text">take?</em></h2>
+          <p class="finder__lead">Pick your level and subjects — we'll show you the teachers and the program that fit.</p>
+
+          <div class="finder__step">
+            <p class="finder__q"><span>1</span> Which level are you starting?</p>
+            <div class="chips" id="finderLevel">
+              <button class="chip" data-v="O Level">O Level</button>
+              <button class="chip" data-v="AS Level">AS Level</button>
+              <button class="chip" data-v="A2 Level">A2 Level</button>
+            </div>
+            <div class="finder__year" id="finderYearWrap" hidden>
+              <p class="finder__subq">Which year of O Level?</p>
+              <div class="chips" id="finderYear">
+                <button class="chip" data-v="O Level 2">O Level 2</button>
+                <button class="chip" data-v="O Level 3">O Level 3</button>
+              </div>
+            </div>
+          </div>
+          <div class="finder__step">
+            <p class="finder__q"><span>2</span> Which subjects are you choosing? <em class="finder__multi">Select as many as you like</em></p>
+            <div class="chips chips--subjects" id="finderSubjects"><p class="finder__wait">Choose your level first ☝️</p></div>
+          </div>
+
+          <div class="finder__result" id="finderResult" hidden></div>
+        </div>
+
+        <aside class="countdown reveal">
+          <p class="kicker">Exam Countdown</p>
+          <h3>May/June 2027 Series</h3>
+          <div class="countdown__clock" id="countdown">
+            <div><strong data-u="d">000</strong><span>Days</span></div>
+            <div><strong data-u="h">00</strong><span>Hours</span></div>
+            <div><strong data-u="m">00</strong><span>Mins</span></div>
+            <div><strong data-u="s">00</strong><span>Secs</span></div>
+          </div>
+          <p class="countdown__note">Approximate start of the Cambridge exam series — check your official timetable.</p>
+          <div class="countdown__ring" aria-hidden="true">
+            <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52"/><circle id="ringProg" cx="60" cy="60" r="52"/></svg>
+            <div><strong id="ringPct">0%</strong><small>of prep time left</small></div>
+          </div>
+          <a href="#contact" class="btn btn--gold btn--block">Start Preparing Now</a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ================= SUBJECTS ================= -->
+    <section class="section subjects" id="subjects">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="kicker">Subjects Offered</p>
+          <h2>The <em class="gold-text">elements</em> of success</h2>
+        </div>
+
+        <div class="filters reveal" role="tablist">
+          <span class="filters__pill" id="filterPill"></span>
+          <button class="filter is-active" data-filter="all">All</button>
+          <button class="filter" data-filter="science">Sciences</button>
+          <button class="filter" data-filter="commerce">Commerce</button>
+          <button class="filter" data-filter="humanities">Humanities</button>
+        </div>
+
+        <div class="subject-tools reveal">
+          <label class="search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <input type="search" id="subjectSearch" placeholder="Search a subject or teacher…" autocomplete="off">
+          </label>
+          <p class="subject-hint"><span class="hint-dot"></span> Tap any subject to see recommended teachers</p>
+        </div>
+        <ul class="elements" id="elements"></ul>
+        <div class="legend reveal">
+          <span><i class="lg lg--science"></i>Sciences</span>
+          <span><i class="lg lg--commerce"></i>Commerce</span>
+          <span><i class="lg lg--humanities"></i>Humanities</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FACULTY ================= -->
+    <section class="section faculty" id="faculty">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="kicker">Our Faculty</p>
+          <h2>35 teachers. <em class="gold-text">One team.</em></h2>
+        </div>
+        <div class="dept-tabs reveal" id="deptTabs">
+          <button class="is-active" data-d="all">All <em></em></button>
+          <button data-d="science">Sciences <em></em></button>
+          <button data-d="commerce">Commerce <em></em></button>
+          <button data-d="humanities">Languages &amp; Humanities <em></em></button>
+        </div>
+        <div class="faculty__grid" id="facultyGrid"></div>
+        <p class="faculty__note reveal">Click a teacher to view their full profile</p>
+      </div>
+    </section>
+
+    <!-- ================= STUDY MATERIAL ================= -->
+    <section class="section study" id="study">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="kicker">Study Material</p>
+          <h2>Notes from <em class="gold-text">your teachers.</em></h2>
+          <p class="study__intro">Every subject comes with material prepared by SKH's teachers — pick a subject to see what you get.</p>
+        </div>
+        <div class="study-tabs reveal" id="studyTabs" role="tablist"></div>
+        <div class="study__grid reveal">
+          <div class="study__panel" id="studyPanel"></div>
+          <div class="books" id="studyBooks" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= QUOTE ================= -->
+    <section class="quote">
+      <div class="container">
+        <span class="quote__mark" aria-hidden="true">“</span>
+        <blockquote class="reveal">Teacher: a child's <em class="gold-text">third parent.</em></blockquote>
+        <p class="reveal">— Sir Khurram Hussain, Founder</p>
+      </div>
+    </section>
+
+    <!-- ================= CAMPUSES ================= -->
+    <section class="section campuses" id="campuses">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="kicker">Our Campuses</p>
+          <h2>Six locations. <em class="gold-text">One standard.</em></h2>
+        </div>
+        <div class="campus-wrap reveal">
+          <ul class="campus-list" id="campusList">
+            <li><button class="is-active" data-i="0"><span>01</span>Gulshan</button></li>
+            <li><button data-i="1"><span>02</span>Jauhar</button></li>
+            <li><button data-i="2"><span>03</span>North</button></li>
+            <li><button data-i="3"><span>04</span>Bahadurabad</button></li>
+            <li><button data-i="4"><span>05</span>PECHS <em class="badge">Girls</em></button></li>
+            <li><button data-i="5"><span>06</span>Defence</button></li>
+          </ul>
+          <div class="campus-card" id="campusCard">
+            <div class="campus-card__deco" aria-hidden="true"></div>
+            <p class="kicker" id="campusNo">Campus 01</p>
+            <h3 id="campusName">Gulshan Campus</h3>
+            <p id="campusAddr">A-292, Block 2, Gulshan-e-Iqbal, Karachi</p>
+            <ul class="campus-meta" id="campusMeta"></ul>
+            <div class="campus-card__actions">
+              <a id="campusMap" href="#" target="_blank" rel="noopener" class="btn btn--gold btn--sm">Get Directions</a>
+              <a id="campusCall" href="tel:+923367647647" class="btn btn--outline btn--sm">Call Us</a>
+              <a id="campusWa" href="https://wa.me/923367647647" target="_blank" rel="noopener" class="btn btn--outline btn--sm">WhatsApp</a>
+            </div>
+          </div>
+        </div>
+        <div class="campus-extra reveal">
+          <div class="campus-extra__map"><iframe id="campusFrame" title="Campus location map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+          <div class="campus-extra__subs">
+            <div class="campus-extra__head">
+              <h3 id="campusSubsTitle">Subjects &amp; teachers at Gulshan</h3>
+              <div class="campus-lv" id="campusLv"><button class="is-on" data-lv="O Level">O Level</button><button data-lv="AS Level">A Level</button></div>
+            </div>
+            <ul class="campus-subs" id="campusSubs"></ul>
+            <a href="#contact" class="link-arrow" id="campusEnrol">Enquire for this campus <span>→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TIMETABLE ================= -->
+    <section class="section timetable" id="timetable">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="kicker">Class Timetable</p>
+          <h2>Find a batch that <em class="gold-text">fits your day</em></h2>
+          <p class="demo-chip demo-chip--light" id="ttNote">Typical weekly schedule · exact timings confirmed at admission</p>
+        </div>
+
+        <div class="tt-controls reveal">
+          <label class="tt-select">
+            <span>Campus</span>
+            <select id="ttCampus"></select>
+          </label>
+          <label class="tt-select">
+            <span>Level</span>
+            <select id="ttLevel"></select>
+          </label>
+          <label class="tt-select">
+            <span>Subject</span>
+            <select id="ttSubject"><option value="">All subjects</option></select>
+          </label>
+        </div>
+
+        <div class="tt-wrap reveal">
+          <div class="tt" id="ttGrid"></div>
+        </div>
+        <p class="tt-hint">Tap a class to view the subject and its teachers</p>
+      </div>
+    </section>
+
+    <!-- ================= HOW TO JOIN ================= -->
+    <section class="section join" id="join">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="kicker">How to Join</p>
+          <h2>Admission in <em class="gold-text">four easy steps</em></h2>
+        </div>
+        <ol class="steps">
+          <li class="step reveal"><span class="step__n">1</span><div class="step__icon"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"/></svg></div><h3>Choose subjects</h3><p>Use the Course Finder or browse subjects to pick your combination and teachers.</p></li>
+          <li class="step reveal"><span class="step__n">2</span><div class="step__icon"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></svg></div><h3>Send an enquiry</h3><p>Fill the form or message us on WhatsApp — we reply with timings and fees.</p></li>
+          <li class="step reveal"><span class="step__n">3</span><div class="step__icon"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 1114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><h3>Visit your campus</h3><p>Meet the team at the campus nearest to you and confirm your batch.</p></li>
+          <li class="step reveal"><span class="step__n">4</span><div class="step__icon"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div><h3>Join your section</h3><p>Start classes, get your study material and access the Student Portal.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= NEWS ================= -->
+    <section class="section news" id="news">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="kicker">Latest from SKH</p>
+          <h2>News &amp; <em class="gold-text">announcements</em></h2>
+        </div>
+        <div class="news__grid" id="newsGrid">
+          <a class="news-card news-card--big reveal" href="https://www.facebook.com/skhsolutions/videos/o-level-islamiyat-workshop-by-sir-khurram-hussain-skh/1181480716189720/" target="_blank" rel="noopener">
+            <span class="news-card__tag">Workshop</span>
+            <div class="news-card__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <h3>O Level Islamiyat Workshop by Sir Khurram Hussain</h3>
+            <p>A focused session on O Level Islamiyat from the founder himself. Watch on Facebook.</p>
+            <span class="news-card__more">Watch video →</span>
+          </a>
+          <a class="news-card reveal" href="https://www.facebook.com/skhsolutions/" target="_blank" rel="noopener">
+            <span class="news-card__tag">Admissions</span>
+            <h3>Admissions open for new sections</h3>
+            <p>New sections open as batches fill up — enquire early to secure your seat.</p>
+            <span class="news-card__more">Read more →</span>
+          </a>
+          <a class="news-card reveal" href="#contact">
+            <span class="news-card__tag">Crash Courses</span>
+            <h3>O &amp; A Level crash courses</h3>
+            <p>Intensive revision in English, Maths, sciences, commerce and humanities before the exams.</p>
+            <span class="news-card__more">Enquire →</span>
+          </a>
+          <a class="news-card reveal" href="#contact">
+            <span class="news-card__tag">CAIE</span>
+            <h3>Private candidate registration</h3>
+            <p>We help private candidates register for Cambridge exams — step by step.</p>
+            <span class="news-card__more">Enquire →</span>
+          </a>
+                  <a class="news-card news-card--social reveal" href="https://www.instagram.com/skh_solutions/" target="_blank" rel="noopener">
+            <span class="news-card__tag">Stay updated</span>
+            <h3>Daily updates, results &amp; schedules</h3>
+            <p>Follow SKH Solutions for batch announcements, workshops and exam tips.</p>
+            <div class="social-row"><span>Instagram</span><span>Facebook</span></div>
+          </a>
+        </div>
+        <p class="news__follow reveal">Follow us for daily updates:
+          <a href="https://www.facebook.com/skhsolutions/" target="_blank" rel="noopener">Facebook</a> ·
+          <a href="https://www.instagram.com/skh_solutions/" target="_blank" rel="noopener">Instagram</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= RESULTS & TESTIMONIALS (managed by the admin) ================= -->
+    <section class="section results" id="results" hidden>
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="kicker">Results &amp; Reviews</p>
+          <h2>Our students, <em class="gold-text">their words.</em></h2>
+        </div>
+        <div class="res-grid" id="resGrid"></div>
+        <div class="tes-grid" id="tesGrid"></div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section class="section faq" id="faq">
+      <div class="container faq__grid">
+        <div class="faq__head reveal">
+          <p class="kicker">FAQs</p>
+          <h2>Questions parents <em class="gold-text">often ask</em></h2>
+          <p>Can't find your answer? Call us on <a href="tel:+923367647647">0336 7647647</a>.</p>
+        </div>
+        <div class="faq__list reveal">
+          <details open><summary>Which exams do you prepare students for?</summary><p>We teach Cambridge (CAIE) O Level, AS Level and A2 Level across sciences, commerce and humanities subjects.</p></details>
+          <details><summary>Do you offer crash courses before exams?</summary><p>Yes. Our intensive crash courses cover the full syllabus along with past-paper practice ahead of each exam session.</p></details>
+          <details><summary>Can private candidates register through you?</summary><p>Yes. We help private candidates with CAIE registration and guide them through the whole process.</p></details>
+          <details><summary>Is there a separate campus for girls?</summary><p>Yes, our PECHS campus is dedicated to girls.</p></details>
+          <details><summary>How do I enrol?</summary><p>Fill in the enquiry form below or call us — we'll share timings, fees and the nearest campus.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="contact__box">
+          <div class="contact__info reveal">
+            <p class="kicker">Admissions Open</p>
+            <h2>Begin your journey <em class="gold-text">with SKH</em></h2>
+            <p>Send your details and we'll reply on WhatsApp with class timings, fees and the campus nearest to you.</p>
+            <ul class="contact__list">
+              <li><span>Phone</span><a href="tel:+923367647647">0336 7647647</a></li>
+              <li><span>Email</span><a href="mailto:skhsolutionss@gmail.com">skhsolutionss@gmail.com</a></li>
+              <li><span>Facebook</span><a href="https://www.facebook.com/skhsolutions/" target="_blank" rel="noopener">/skhsolutions</a></li>
+              <li><span>Instagram</span><a href="https://www.instagram.com/skh_solutions/" target="_blank" rel="noopener">@skh_solutions</a></li>
+            </ul>
+          </div>
+
+          <form class="form reveal" id="enrolForm" novalidate>
+            <div class="form__row">
+              <div class="field"><input type="text" name="name" id="f-name" required placeholder=" "><label for="f-name">Student Name</label></div>
+              <div class="field"><input type="tel" name="phone" id="f-phone" required placeholder=" "><label for="f-phone">Phone Number</label></div>
+            </div>
+            <div class="form__row">
+              <div class="field field--select">
+                <select name="level" id="f-level" required>
+                  <option value="">Select level</option>
+                  <option>O Level</option><option>AS Level</option><option>A2 Level</option><option>Crash Course</option><option>CAIE Registration</option>
+                </select><label for="f-level">Level</label>
+              </div>
+              <div class="field field--select">
+                <select name="campus" id="f-campus" required>
+                  <option value="">Select campus</option>
+                  <option>Gulshan</option><option>Jauhar</option><option>North</option><option>Bahadurabad</option><option>PECHS (Girls)</option><option>Defence</option>
+                </select><label for="f-campus">Preferred Campus</label>
+              </div>
+            </div>
+            <div class="field"><input type="text" name="subjects" id="f-subjects" placeholder=" "><label for="f-subjects">Subjects (e.g. Physics, Maths)</label></div>
+            <div class="picked" id="picked"></div>
+            <div class="field"><input type="text" name="teacher" id="f-teacher" placeholder=" "><label for="f-teacher">Preferred Teacher (optional)</label></div>
+            <button type="submit" class="btn btn--gold btn--shine btn--block">Send Enquiry <span class="btn__arrow">→</span></button>
+            <p class="form__msg" id="formMsg" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div>
+          <a href="#home" class="logo">
+            <span class="logo__mark"><img src="assets/skh-emblem.png" alt=""></span>
+            <span class="logo__text">SKH Solutions<small>One Stop Solution</small></span>
+          </a>
+          <p class="footer__tag">An Institute of O &amp; A Levels — one stop for all the solutions to our students' problems.</p>
+          <div class="footer__bar brand-accent"></div>
+        </div>
+        <nav class="footer__nav" aria-label="Footer">
+          <a href="#about">About</a><a href="#programs">Programs</a><a href="#subjects">Subjects</a>
+          <a href="#faculty">Faculty</a><a href="#timetable">Timetable</a><a href="#campuses">Campuses</a><a href="#contact">Contact</a><a href="portal.html">Student Portal</a><a href="teacher.html">Teacher Portal</a>
+        </nav>
+      </div>
+      <div class="footer__giant" aria-hidden="true">SKH</div>
+      <div class="footer__bottom">
+        <p>© <span id="year"></span> SKH Solutions, Karachi. All rights reserved.</p>
+        <p class="credit">Designed &amp; developed by <a href="mailto:mohdrayyanali9@gmail.com">Rayyan</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal (subject + teacher details) -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal__bar">
+        <button class="modal__back" id="modalBack" hidden>← Back</button>
+        <button class="modal__close" data-close aria-label="Close">✕</button>
+      </div>
+      <div class="modal__body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- Enquiry basket -->
+  <button class="basket" id="basket" hidden>
+    <span class="basket__count" id="basketCount">0</span>
+    <span>My Enquiry</span>
+  </button>
+
+  <!-- Ask SKH assistant -->
+  <div class="chat" id="chat">
+    <button class="chat__launcher" id="chatLauncher" aria-label="Open Ask SKH assistant" aria-expanded="false">
+      <span class="chat__launcher-icon">
+        <svg viewBox="0 0 24 24" class="i-chat"><path d="M4 5h16v11H8l-4 4z"/><circle cx="9" cy="10.5" r="1"/><circle cx="12" cy="10.5" r="1"/><circle cx="15" cy="10.5" r="1"/></svg>
+        <svg viewBox="0 0 24 24" class="i-close"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </span>
+      <span class="chat__badge" id="chatBadge">1</span>
+    </button>
+    <div class="chat__teaser" id="chatTeaser">👋 Have a question? <b>Ask SKH</b></div>
+
+    <section class="chat__panel" id="chatPanel" aria-label="Ask SKH assistant" aria-hidden="true">
+      <header class="chat__head">
+        <div class="chat__avatar">SKH<span class="chat__online"></span></div>
+        <div>
+          <strong>Ask SKH</strong>
+          <small>Virtual assistant · replies instantly</small>
+        </div>
+        <button class="chat__min" id="chatMin" aria-label="Minimise">—</button>
+      </header>
+      <div class="chat__log" id="chatLog" aria-live="polite"></div>
+      <div class="chat__quick" id="chatQuick"></div>
+      <form class="chat__form" id="chatForm" autocomplete="off">
+        <input id="chatInput" type="text" placeholder="Ask about subjects, teachers, fees…" aria-label="Type your question">
+        <button type="submit" aria-label="Send"><svg viewBox="0 0 24 24"><path d="M4 12l16-8-6 16-2-7z"/></svg></button>
+      </form>
+      <a class="chat__human" href="https://wa.me/923367647647" target="_blank" rel="noopener">Prefer a human? Chat on WhatsApp →</a>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <a href="#home" class="to-top" id="toTop" aria-label="Back to top">↑</a>
+
+  <script src="js/data.js"></script>
+  <script src="js/demo.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/extras.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>

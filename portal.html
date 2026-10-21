@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#072062">
+  <title>Student Portal | SKH Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,600;1,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/portal.css">
+  <script>
+    // apply saved light/dark theme before the page paints
+    try { const t = localStorage.getItem("skh-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <link rel="icon" href="assets/skh-emblem.png">
+</head>
+<body class="portal-body">
+
+  <!-- ================= LOGIN ================= -->
+  <section class="login" id="login">
+    <div class="login__art">
+      <span class="orb orb--1"></span><span class="orb orb--2"></span>
+      <a href="index.html" class="login__back">← Back to website</a>
+      <div class="login__art-inner">
+        <img class="login__crest" src="assets/skh-emblem.png" alt="SKH Solutions logo">
+        <h1>Your learning,<br><em class="gold-text">all in one place.</em></h1>
+        <ul class="login__feats">
+          <li><span>✦</span> Live timetable for your classes</li>
+          <li><span>✦</span> Test marks & progress charts</li>
+          <li><span>✦</span> Attendance record</li>
+          <li><span>✦</span> Assignments & notices from teachers</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="login__form-wrap">
+      <form class="login__form" id="loginForm">
+        <a href="index.html" class="logo logo--dark">
+          <span class="logo__mark"><img src="assets/skh-emblem.png" alt=""></span>
+          <span class="logo__text">SKH Solutions<small>Student Portal</small></span>
+        </a>
+        <h2>Welcome back 👋</h2>
+        <p class="login__sub">Sign in to view your classes, marks and attendance.</p>
+
+        <div class="who-toggle" id="whoToggle" role="tablist" aria-label="Who is signing in">
+          <button type="button" class="is-on" data-who="student" role="tab" aria-selected="true">🎓 Student</button>
+          <button type="button" data-who="parent" role="tab" aria-selected="false">👪 Parent</button>
+        </div>
+        <label class="lf">
+          <span>Student ID</span>
+          <input type="text" id="sid" placeholder="e.g. SKH-2026-0101" autocomplete="username" required>
+        </label>
+        <label class="lf">
+          <span>Password</span>
+          <div class="lf__pw">
+            <input type="password" id="spw" placeholder="Password" autocomplete="current-password" required>
+            <button type="button" id="pwToggle" aria-label="Show password">Show</button>
+          </div>
+        </label>
+        <div class="login__row">
+          <span class="login__note">Your Student ID and password are given by SKH at admission.</span>
+          <a href="https://wa.me/923367647647?text=Assalam-o-Alaikum%2C%20I%20forgot%20my%20SKH%20portal%20password." target="_blank" rel="noopener">Forgot password?</a>
+        </div>
+        <p class="login__err" id="loginErr" role="alert" hidden></p>
+        <button class="btn btn--gold btn--block btn--shine" id="loginBtn" type="submit">
+          <span class="lb-text" id="loginBtnText">Sign in to Portal</span><span class="spinner" aria-hidden="true"></span>
+        </button>
+        <p class="login__help login__help--teacher">Are you a teacher? <a href="teacher.html">Teacher login →</a></p>
+        <p class="login__help">Not enrolled yet? <a href="index.html#contact">Enquire about admission</a></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================= DASHBOARD ================= -->
+  <div class="app" id="app" hidden>
+    <aside class="side">
+      <a href="index.html" class="logo">
+        <span class="logo__mark"><img src="assets/skh-emblem.png" alt=""></span>
+        <span class="logo__text">SKH Solutions<small>Student Portal</small></span>
+      </a>
+      <nav class="side__nav" id="sideNav">
+        <button class="is-active" data-view="dash"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Dashboard</span></button>
+        <button data-view="time"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg><span>Timetable</span></button>
+        <button data-view="marks"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span>Results</span></button>
+        <button data-view="attend"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span>Attendance</span></button>
+        <button data-view="planner"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M7 13h4M7 17h7"/></svg><span>Planner</span></button>
+        <button data-view="tasks"><svg viewBox="0 0 24 24"><path d="M9 4h6M9 4a2 2 0 00-2 2H5v15h14V6h-2a2 2 0 00-2-2M9 13l2 2 4-4"/></svg><span>Assignments</span><em class="side__count" id="taskCount">3</em></button>
+        <button data-view="fees"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg><span>Fees</span></button>
+        <button data-view="notice"><svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 1112 0c0 7 3 9 3 9H3s3-2 3-9M10 21a2 2 0 004 0"/></svg><span>Notices</span></button>
+        <button data-view="profile"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span>My Profile</span></button>
+      </nav>
+      <button class="side__logout" id="logout"><svg viewBox="0 0 24 24"><path d="M15 4h4v16h-4M10 16l4-4-4-4M14 12H3"/></svg><span>Log out</span></button>
+    </aside>
+
+    <main class="main">
+      <header class="top">
+        <div>
+          <p class="top__hello" id="hello">Good evening</p>
+          <h1 class="top__title" id="viewTitle">Dashboard</h1>
+        </div>
+        <div class="top__right">
+          <span class="demo-chip sync-chip" id="syncChip">● Saved</span>
+          <button class="tpill" id="themeToggle" role="switch" aria-checked="false" aria-label="Switch light / dark mode" title="Light / dark mode">
+            <span class="tpill__lab tpill__lab--l">Light<br>mode</span>
+            <span class="tpill__lab tpill__lab--d">Dark<br>mode</span>
+            <span class="tpill__k" aria-hidden="true">
+              <svg class="tpill__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="4.4"/><path d="M12 2.6v2.4M12 19v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.6 12H5M19 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
+              <svg class="tpill__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.6 8.6 0 1 1 10.4 3.6a6.8 6.8 0 0 0 10.1 10.6z"/><path d="M16.6 4.4l.5 1.3 1.3.5-1.3.5-.5 1.3-.5-1.3-1.3-.5 1.3-.5z"/></svg>
+            </span>
+          </button>
+          <button class="user" data-view="profile" aria-label="My profile"><span class="user__av" id="userAv"></span>
+            <div><strong id="userName"></strong><small id="userMeta"></small></div></button>
+        </div>
+      </header>
+
+      <div class="views">
+        <!-- Dashboard -->
+        <section class="view is-active" data-v="dash">
+          <div class="dash-actions">
+            <div class="fee-banner" id="feeBanner" hidden></div>
+            <button class="btn btn--gold btn--sm" id="dashReport">📄 Download monthly report (PDF)</button>
+          </div>
+          <div class="kpis" id="kpis"></div>
+          <div class="dash-grid">
+            <div class="panel panel--chart">
+              <div class="panel__head"><h3>Test performance</h3><span>Latest scores (%)</span></div>
+              <div class="bars" id="bars"></div>
+            </div>
+            <div class="panel">
+              <div class="panel__head"><h3>Today's classes</h3><span id="todayName"></span></div>
+              <ul class="today" id="todayList"></ul>
+            </div>
+            <div class="panel">
+              <div class="panel__head"><h3>Latest notices</h3><button class="link-btn" data-go="notice">View all</button></div>
+              <ul class="notices notices--mini" id="miniNotices"></ul>
+            </div>
+            <div class="panel panel--remarks">
+              <div class="panel__head"><h3>Teacher remarks</h3><span>From your teachers</span></div>
+              <ul class="remarks" id="remarksBox"></ul>
+            </div>
+            <div class="panel panel--exam">
+              <p class="kicker">Exam countdown</p>
+              <strong class="exam-days" id="examDays">0</strong>
+              <span>days to the May/June series</span>
+              <div class="exam-bar"><i id="examBar"></i></div>
+              <small id="examMsg"></small>
+            </div>
+          </div>
+        </section>
+
+        <!-- Timetable -->
+        <section class="view" data-v="time">
+          <div class="panel">
+            <div class="panel__head"><h3>Weekly timetable</h3><span id="ttMeta"></span></div>
+            <div class="tt-wrap"><div class="tt tt--portal" id="pTimetable"></div></div>
+          </div>
+        </section>
+
+        <!-- Results -->
+        <section class="view" data-v="marks">
+          <div class="subject-avgs" id="subjectAvgs"></div>
+          <div class="panel">
+            <div class="panel__head"><h3>All tests</h3>
+              <select class="mini-select" id="marksFilter"><option value="">All subjects</option></select>
+            </div>
+            <div class="table-wrap">
+              <table class="marks">
+                <thead><tr><th>Test</th><th>Subject</th><th>Date</th><th>Score</th><th>Grade</th></tr></thead>
+                <tbody id="marksBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Attendance -->
+        <section class="view" data-v="attend">
+          <div class="attend-grid">
+            <div class="panel">
+              <div class="panel__head"><h3 id="calTitle">September 2026</h3>
+                <div class="cal-nav"><button id="calPrev" aria-label="Previous month">‹</button><button id="calNext" aria-label="Next month">›</button></div>
+              </div>
+              <div class="cal" id="cal"></div>
+              <div class="cal-legend">
+                <span><i class="st st--p"></i>Present</span>
+                <span><i class="st st--a"></i>Absent</span>
+                <span><i class="st st--l"></i>Late</span>
+                <span><i class="st st--h"></i>Holiday / No class</span>
+              </div>
+            </div>
+            <div class="panel attend-sum" id="attendSum"></div>
+          </div>
+        </section>
+
+        <!-- Assignments -->
+        <section class="view" data-v="tasks">
+          <div class="task-tabs" id="taskTabs">
+            <button class="is-active" data-f="all">All</button>
+            <button data-f="pending">Pending</button>
+            <button data-f="done">Submitted</button>
+          </div>
+          <div class="tasks" id="tasks"></div>
+        </section>
+
+        <!-- Planner -->
+        <section class="view" data-v="planner">
+          <div class="pl-top">
+            <div class="pl-tabs" id="plTabs" role="tablist"></div>
+            <button class="btn btn--outline btn--sm pl-edit" id="plEdit">+ Add / remove subjects</button>
+          </div>
+          <div class="pl-picker panel" id="plPicker" hidden></div>
+          <div id="plBody"></div>
+        </section>
+
+        <!-- Fees -->
+        <section class="view" data-v="fees">
+          <div id="feesView"></div>
+        </section>
+
+        <!-- Profile -->
+        <section class="view" data-v="profile"><div id="profileView"></div></section>
+
+        <!-- Notices -->
+        <section class="view" data-v="notice">
+          <div class="panel"><ul class="notices" id="notices"></ul></div>
+        </section>
+      </div>
+    </main>
+
+    <!-- mobile bottom nav -->
+    <nav class="bottom-nav" id="bottomNav"></nav>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/demo.js"></script>
+  <script src="js/syllabus.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/account.js"></script>
+  <script src="js/qr.js"></script>
+  <script src="js/reports.js"></script>
+  <script src="js/portal.js"></script>
+</body>
+</html>

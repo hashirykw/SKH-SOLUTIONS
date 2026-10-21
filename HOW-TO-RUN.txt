@@ -1,0 +1,73 @@
+QUICK DEMO (no installing anything)
+- Just double-click index.html, portal.html or teacher.html.
+- The site runs in DEMO MODE with sample students, marks, fees and enquiries,
+  saved only in that browser. A pink "DEMO" badge shows it; "Reset demo" starts fresh.
+- Demo logins (also shown as buttons on each login page):
+    Admin (Sir Khurram):  SKH-T-101   / admin1234
+    Teachers:             their Staff ID / teach1234
+    Students:             SKH-2026-0101 … 0108 / demo1234
+    Parents:              child's Student ID / parent1234  (tap "Parent" first)
+- Tip: open the teacher portal and the student portal in two tabs — marks and
+  notices a teacher saves appear in the student's tab automatically.
+- The same folder uploaded to a free static host (e.g. Netlify Drop) also runs as a demo
+  link you can send on WhatsApp.
+
+SKH SOLUTIONS WEBSITE - HOW TO RUN (temporary local backend)
+=============================================================
+
+1. Install Node.js (LTS) once:  https://nodejs.org
+2. Double-click  START-SERVER.bat
+   - The website opens at  http://localhost:3000
+   - Keep the black window open while using the site. Close it to stop the server.
+3. The first time it runs it creates:
+   - data\db.json       <- all saved data (students, marks, attendance, planners, fees, enquiries)
+   - CREDENTIALS.txt    <- first-login Staff IDs + passwords for all teachers
+
+LOGGING IN
+- Teacher Portal:  http://localhost:3000/teacher.html
+  Sir Khurram (SKH-T-101) is the ADMIN. Everyone must change their password after the first login.
+- Admin can: see admission enquiries, enrol students (creates Student ID + password),
+  edit / remove students, reset passwords, mark fees paid, set fee rates, late fee and bank details.
+- Student Portal:  http://localhost:3000/portal.html  (use the Student ID + password the admin created)
+- Parents: same page, tap "Parent", then the child's Student ID + the PARENT password
+  (shown when the admin enrols a student; admin can also create/reset it in Manage Students).
+  Parents can see everything but cannot change anything.
+
+QR ATTENDANCE
+- Every student has an Attendance QR in My Profile (download or print it as a card).
+- Teacher Portal -> Attendance -> "Scan QR" uses the camera. The camera only works on
+  http://localhost (this PC) or on an https website. A USB/Bluetooth QR scanner works anywhere:
+  click the "Scan or type a Student ID" box and scan. Then press "Mark rest absent" and "Save attendance".
+
+ADMIN CAN EDIT EVERYTHING (no code needed)
+- Teacher Profiles: bio, qualifications, levels and the campuses each teacher covers
+  (students at those campuses are then matched to that teacher).
+- Timetables: the real class timetable per campus + level (shows on the website and in student portals).
+- Website Content: campus phones/timings/maps, results, testimonials and news.
+- Fees & Settings: fee per subject, late fee, bank details.
+
+BACKUPS
+- A copy of all data is saved automatically every day in data\backups (last 30 days kept).
+- Teacher Portal -> Backups: download a backup, or restore an older one.
+- People now stay logged in when the server restarts.
+
+PUTTING IT ONLINE
+- See DEPLOY.txt (Railway or Render, about US$5-7 a month, own domain optional).
+
+WEBSITE CONTENT (admin)
+- Teacher Portal -> Website Content: campus phone numbers, timings and Google Maps links,
+  results and testimonials. Results / testimonials only show on the website once added
+  (only add real ones that people agreed to share).
+
+TRY THE WHOLE FLOW
+ a) On the website, send an admission enquiry (Contact section).
+ b) Log in as the admin -> Admissions -> "Enrol as student". Note the Student ID + password shown.
+ c) Log in as that student in another browser window (or a private window).
+ d) Log in as a teacher of that subject/campus, enter marks or attendance -> the student portal updates live.
+
+NOTES
+- Must be opened through http://localhost:3000 (double-clicking index.html won't save anything).
+- Other devices on the same Wi-Fi can open  http://<this-PC's-IP>:3000
+- Start again from zero: stop the server, delete the "data" folder and CREDENTIALS.txt, start again.
+- Keep data\ and CREDENTIALS.txt private. This is a temporary backend for trying the site out,
+  not for public hosting (no HTTPS, sessions reset when the server restarts).

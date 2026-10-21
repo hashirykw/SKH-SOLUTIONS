@@ -1,0 +1,45 @@
+TEACHER PHOTOS
+==============
+
+Put each teacher's photo in this folder with the exact file name below.
+It will appear on the website automatically (faculty cards, profiles, Course Finder).
+Use a square or portrait .jpg, ideally at least 400 x 400 pixels.
+Only use photos SKH has given you or approved.
+
+khurram.jpg       Sir Khurram Hussain  (Islamiyat)
+anees.jpg         Sir Anees Masood  (English)
+jalal.jpg         Sir Jalal Azam  (English)
+beenish.jpg       Miss Beenish Ramzan  (English)
+jaweria.jpg       Miss Jaweria Amer  (English)
+adeel.jpg         Sir Adeel Jatoi  (Mathematics)
+mali.jpg          Sir M. Ali Khan  (Mathematics)
+yousuf.jpg        Sir Yousuf Panwala  (Mathematics)
+babar.jpg         Sir Babar Hussain  (Physics)
+ghazi.jpg         Sir Ghazi Hassan  (Chemistry)
+ali.jpg           Sir Ali Siddiqui  (Chemistry)
+umer.jpg          Sir Umer Soni  (Biology)
+sami.jpg          Sir Sami Khatri  (Computer Science)
+zafar.jpg         Sir Zafar Ali Khan  (Computer Science)
+nabi.jpg          Sir Ghulam Nabi  (Accounting)
+bawany.jpg        Sir Ahmed Bawany  (Accounting)
+paperwala.jpg     Sir Adeel Paperwala  (Accounting)
+usama.jpg         Sir Usama Rasheed  (Economics)
+asif.jpg          Sir Asif Farooq  (Economics)
+surti.jpg         Sir Saeed Surti  (Business Studies)
+kamran.jpg        Sir Kamran A. Salam  (Business Studies)
+umang.jpg         Sir Abid Ali Umang  (Urdu)
+fahad.jpg         Sir Fahad Asif  (Urdu)
+nusrat.jpg        Miss Nusrat Sarfaraz  (Urdu)
+faizan.jpg        Sir Faizan Fazal  (Pakistan Studies)
+haisam.jpg        Sir Haisam Javed  (Pakistan Studies)
+samiullah.jpg     Sir Samiullah Pathan  (Sociology)
+bilal.jpg         Sir Bilal Hassan  (Psychology)
+
+New teachers:
+saad.jpg          Sir Saad Pancha  (Additional Mathematics)
+zain.jpg          Sir Zain Merchant  (Computer Science)
+alihassan.jpg     Sir Ali Hassan  (Business Studies)
+zindani.jpg       Sir Bilal Zindani  (Law)
+yahya.jpg         Sir Yahya Khan  (Biology)
+kashif.jpg        Sir Kashif Ismail  (Chemistry)
+adil.jpg          Sir Adil Azeem  (Physics)

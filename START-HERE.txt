@@ -1,0 +1,34 @@
+SKH SOLUTIONS — WEBSITE + STUDENT/PARENT PORTAL + TEACHER/ADMIN PORTAL
+=====================================================================
+
+1) QUICK DEMO — any computer, nothing to install
+   Unzip, then double-click  index.html  (website),  portal.html  (students/parents)
+   or  teacher.html  (teachers/admin). It runs in DEMO MODE with sample data.
+   Demo logins (also shown as buttons on the login pages):
+     Admin (Sir Khurram)  SKH-T-101 / admin1234
+     Teachers             Staff ID  / teach1234
+     Students             SKH-2026-0101 ... 0108 / demo1234
+     Parents              child's Student ID / parent1234  (tap "Parent")
+
+2) REAL VERSION (saves real data) — Windows, Mac or Linux
+   Install Node.js LTS from https://nodejs.org once, then:
+     Windows:  double-click  START-SERVER.bat
+     Mac:      double-click  START-SERVER.command
+               (first time: right-click > Open, because macOS asks)
+     Linux:    sh start-server.sh
+   The site opens at http://localhost:3000 . First run creates CREDENTIALS.txt
+   with every teacher's login. Details: HOW-TO-RUN.txt
+
+3) PHONES & iPADS
+   - While the server is running, any phone/iPad on the SAME Wi-Fi can open the
+     address printed in the black window, e.g. http://192.168.1.5:3000
+   - To open it from anywhere (Sir Khurram's phone, any city): put it online —
+     see DEPLOY.txt (Railway or Render). That gives one real link for everyone.
+   - Every page is built for screens from small phones to big monitors,
+     in light and dark mode.
+
+FOLDERS
+   index.html, portal.html, teacher.html   the three parts of the site
+   css/  js/  assets/                      styles, code, logo
+   server.js                               the backend (Node.js, no installs needed)
+   data/                                   created on first run — all saved data + backups (keep private)

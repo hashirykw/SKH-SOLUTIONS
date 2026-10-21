@@ -1,0 +1,35 @@
+PUTTING THE SKH WEBSITE ONLINE
+==============================
+
+The site needs a host that runs Node.js AND keeps files (a "disk" / "volume"),
+because all data is saved in DATA_DIR/db.json. Two easy options:
+
+OPTION A — Railway (railway.app)  ~ US$5/month
+  1. Put this folder on GitHub (private repository). The .gitignore already
+     keeps data/ and CREDENTIALS.txt out of GitHub.
+  2. Railway → New Project → Deploy from GitHub repo → choose it.
+  3. Add a Volume, mount path:  /data
+  4. Variables:  DATA_DIR = /data     SKH_ADMIN_PASSWORD = (a strong password)
+  5. Settings → Networking → Generate Domain. Open it — done.
+
+OPTION B — Render (render.com)  ~ US$7/month (Starter plan, needed for a disk)
+  1. Put this folder on GitHub (private repository).
+  2. Render → New → Blueprint → choose the repo (render.yaml sets everything up).
+  3. Type SKH_ADMIN_PASSWORD when asked. Open the .onrender.com link.
+  (Render's FREE plan works for a quick demo, but it wipes all data whenever it sleeps/restarts.)
+
+AFTER IT IS ONLINE
+  - Admin login: SKH-T-101 + the SKH_ADMIN_PASSWORD you set.
+  - Other teachers' first passwords: DATA_DIR/CREDENTIALS.txt is not easy to open on a host,
+    so the admin simply uses Teacher Logins → "Reset password" for each teacher and
+    hands them the new password.
+  - Backups: Teacher Portal → Backups → "Download a backup now" once a week and keep it in Google Drive.
+  - Own domain (e.g. skhsolutions.pk): buy it (PKNIC or a registrar), then add it in
+    Railway/Render → Custom Domain and follow their DNS steps. HTTPS is automatic.
+  - With https, phone cameras can scan attendance QR codes.
+
+ENVIRONMENT VARIABLES
+  PORT                set by the host automatically
+  DATA_DIR            folder on the persistent disk/volume (db.json, sessions, backups, CREDENTIALS.txt)
+  SKH_ADMIN_PASSWORD  first password for the admin (SKH-T-101); only used the very first time
+  TRUST_PROXY=1       only for other hosts behind a proxy (Render/Railway are detected automatically)

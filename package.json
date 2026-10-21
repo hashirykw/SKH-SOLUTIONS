@@ -1,0 +1,13 @@
+{
+  "name": "skh-solutions-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SKH Solutions website, student/parent portal and teacher/admin portal",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
